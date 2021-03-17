@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Linio</string>
+    <string name="connection_error">We could not recover favorite list</string>
 </resources>
