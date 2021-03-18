@@ -1,4 +1,4 @@
-package com.moises.linio.core.design
+package com.moises.linio.core.design.product
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.moises.linio.R
-import com.moises.linio.core.design.adapter.OptionIconAdapter
-import com.moises.linio.core.design.model.ProductView
+import com.moises.linio.core.design.product.adapter.OptionIconAdapter
+import com.moises.linio.core.design.product.model.ProductView
 import com.moises.linio.core.ui.gone
 import com.moises.linio.core.ui.visible
 import com.moises.linio.databinding.ProductCardBinding
@@ -20,11 +20,13 @@ class CardProductView @JvmOverloads constructor(
     context: Context,
     attributeSet: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : LinearLayout(context, attributeSet, defStyleAttr), CardProductContract.View {
+) : LinearLayout(context, attributeSet, defStyleAttr),
+    CardProductContract.View {
 
     private val binding: ProductCardBinding =
         ProductCardBinding.bind(View.inflate(context, R.layout.product_card, this))
-    private val presenter: CardProductContract.Presenter = CardProductPresenter(this)
+    private val presenter: CardProductContract.Presenter =
+        CardProductPresenter(this)
     private val optionIconsAdapter = OptionIconAdapter()
 
     init {

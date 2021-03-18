@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Toolbar">
+    <style name="Toolbar" parent="">
         <item name="android:gravity">center_horizontal</item>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textStyle">bold</item>
@@ -8,12 +8,36 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="Title">
+    <style name="Title" parent="">
         <item name="android:gravity">center_horizontal</item>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">16sp</item>
         <item name="android:lineSpacingExtra">3sp</item>
         <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Title2" parent="">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Subtitle" parent="">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:textColor">@color/pinkish_grey</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlayCustomCardCorners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeTopLeft">@dimen/dimen_6dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
     </style>
 </resources>

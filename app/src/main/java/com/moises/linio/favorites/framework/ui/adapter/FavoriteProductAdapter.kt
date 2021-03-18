@@ -2,15 +2,19 @@ package com.moises.linio.favorites.framework.ui.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.moises.linio.core.design.CardProductView
-import com.moises.linio.core.design.model.ProductView
+import com.moises.linio.core.design.product.CardProductView
+import com.moises.linio.core.design.product.model.ProductView
 
 class FavoriteProductAdapter(
     private val products: MutableList<ProductView> = mutableListOf()
 ) : RecyclerView.Adapter<FavoriteProductViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteProductViewHolder =
-        FavoriteProductViewHolder(CardProductView(parent.context))
+        FavoriteProductViewHolder(
+            CardProductView(
+                parent.context
+            )
+        )
 
     override fun getItemCount(): Int = products.size
 

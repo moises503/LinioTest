@@ -1,4 +1,4 @@
-package com.moises.linio.core.design.model
+package com.moises.linio.core.design.product.model
 
 import androidx.annotation.DrawableRes
 

@@ -2,7 +2,7 @@ package com.moises.linio.favorites.framework.ui.mapper
 
 import com.moises.linio.R
 import com.moises.linio.core.arch.Mapper
-import com.moises.linio.core.design.model.ProductView
+import com.moises.linio.core.design.product.model.ProductView
 import com.moises.linio.favorites.domain.model.FavoriteProduct
 
 class FavoriteProductToProductViewMapper : Mapper<FavoriteProduct, ProductView>() {

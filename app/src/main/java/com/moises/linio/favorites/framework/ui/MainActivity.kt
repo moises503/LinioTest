@@ -8,14 +8,14 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.moises.linio.R
 import com.moises.linio.core.arch.ScreenState
-import com.moises.linio.core.ui.gone
-import com.moises.linio.core.ui.setAppToolbar
-import com.moises.linio.core.ui.toast
-import com.moises.linio.core.ui.visible
+import com.moises.linio.core.ui.*
+import com.moises.linio.core.ui.EqualSpaceItemDecoration
 import com.moises.linio.databinding.ActivityMainBinding
 import com.moises.linio.favorites.framework.presentation.FavoriteViewState
 import com.moises.linio.favorites.framework.presentation.FavoritesViewModel
+import com.moises.linio.favorites.framework.ui.adapter.FavoriteCollectionAdapter
 import com.moises.linio.favorites.framework.ui.adapter.FavoriteProductAdapter
+import com.moises.linio.favorites.framework.util.toProductCollectionList
 import com.moises.linio.favorites.framework.util.toProductViewList
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val favoriteViewModel: FavoritesViewModel by viewModels()
     private val productFavoritesAdapter: FavoriteProductAdapter = FavoriteProductAdapter()
+    private val favoriteCollectionAdapter: FavoriteCollectionAdapter = FavoriteCollectionAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +56,10 @@ class MainActivity : AppCompatActivity() {
             adapter = productFavoritesAdapter
             layoutManager = GridLayoutManager(this@MainActivity, 2)
         }
+        binding.favoritesCollectionRecyclerView.apply {
+            adapter = favoriteCollectionAdapter
+            addItemDecoration(EqualSpaceItemDecoration(resources.getDimensionPixelSize(R.dimen.dimen_4dp)))
+        }
     }
 
     private fun renderScreenState(screenState: ScreenState<FavoriteViewState>) {
@@ -75,6 +80,7 @@ class MainActivity : AppCompatActivity() {
     private fun renderFavoritesList(data : FavoriteViewState.Success) {
         binding.allFavoritesTextView.text = String.format(getString(R.string.all_my_favorites), data.favoritesTotal)
         productFavoritesAdapter.updateDataSet(data.productFavorites.toProductViewList())
+        favoriteCollectionAdapter.updateDataSet(data.list.toProductCollectionList())
     }
 
     private fun showError(message: String) {

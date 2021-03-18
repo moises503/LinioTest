@@ -1,6 +1,6 @@
-package com.moises.linio.core.design
+package com.moises.linio.core.design.product
 
-import com.moises.linio.core.design.model.ProductView
+import com.moises.linio.core.design.product.model.ProductView
 
 interface CardProductContract {
     interface Presenter {

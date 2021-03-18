@@ -28,7 +28,15 @@
                 android:layout_height="@dimen/dimen_200dp"
                 android:background="@color/white_three"
                 android:orientation="vertical">
-
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/favoritesCollectionRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_10dp"
+                    android:layout_marginEnd="@dimen/dimen_10dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/product_collection"/>
             </LinearLayout>
             <TextView
                 android:id="@+id/allFavoritesTextView"
