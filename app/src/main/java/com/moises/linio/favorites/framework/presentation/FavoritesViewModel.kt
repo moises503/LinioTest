@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.moises.linio.core.arch.ScreenState
 import com.moises.linio.core.assets.ResourceManager
+import com.moises.linio.favorites.domain.model.FavoriteList
+import com.moises.linio.favorites.domain.model.FavoriteProduct
 import com.moises.linio.favorites.domain.repository.FavoriteRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
@@ -38,10 +40,20 @@ class FavoritesViewModel @Inject constructor(
             }.collect {
                 _favoriteState.postValue(
                     ScreenState.Render(
-                        FavoriteViewState.Success(it)
+                        getFavorites(it)
                     )
                 )
             }
         }
+    }
+
+    private fun getFavorites(list: List<FavoriteList>): FavoriteViewState.Success {
+        var total = 0
+        val favorites = mutableListOf<FavoriteProduct>()
+        list.forEach {
+            total += it.products.size
+            favorites.addAll(it.products)
+        }
+        return FavoriteViewState.Success(list, favorites, total)
     }
 }
